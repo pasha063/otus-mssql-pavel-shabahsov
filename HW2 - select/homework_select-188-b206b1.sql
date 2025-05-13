@@ -157,6 +157,7 @@ from Purchasing.Suppliers as s
 который оформил заказ (SalespersonPerson).
 Сделать без подзапросов.
 */
+/*
 select top 10
 	i.InvoiceID
 	,p2.FullName as ClientName
@@ -172,6 +173,18 @@ from Sales.Invoices as i
 order by 
 	i.ConfirmedDeliveryTime desc --если продажа в момент доставки
 	--,i.InvoiceDate desc --если имеет значение только дата, а не время. 
+*/
+
+select top 10
+	o.OrderID
+	,p.FullName as ClientName
+	,p2.FullName as SalesPersonName
+from Sales.Orders as o
+	inner join [Application].People as p2 on p2.PersonID = o.SalespersonPersonID
+	inner join Sales.Customers as c on c.CustomerID = o.CustomerID
+	inner join [Application].People as p on p.PersonID = c.PrimaryContactPersonID
+order by o.OrderDate desc 
+
 
 /*
 6. Все ид и имена клиентов и их контактные телефоны,
