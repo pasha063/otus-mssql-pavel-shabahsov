@@ -34,10 +34,8 @@ select
 	p.PersonID
 	,p.FullName
 from [Application].People as p
-	left join Sales.Invoices as i on i.SalespersonPersonID = p.PersonID
-		and i.InvoiceDate = '20150704'
 where p.IsSalesperson = 1
-	and i.SalespersonPersonID is null
+	and not exists (select 1 from Sales.Invoices as s where s.InvoiceDate = '20150704' and s.SalespersonPersonID = p.PersonID)
 
 /*
 2. Выберите товары с минимальной ценой (подзапросом). Сделайте два варианта подзапроса. 
