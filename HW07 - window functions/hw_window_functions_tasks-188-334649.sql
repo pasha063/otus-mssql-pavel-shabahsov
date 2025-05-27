@@ -41,35 +41,39 @@ USE WideWorldImporters
 set statistics io on;  
 go 
 
-select distinct
+select
 	i.InvoiceDate
+	,c.CustomerName
+	,i.InvoiceDate
+	,(il.Quantity * il.UnitPrice) as SalesAmount
 	,(
-		select sum(il.Quantity * il.UnitPrice)
-		from Sales.InvoiceLines as il
-		where il.InvoiceID in (
-			select InvoiceID
-			from Sales.Invoices as inv 
-			where year(inv.InvoiceDate) = year(i.InvoiceDate)
-				and month(inv.InvoiceDate) = month(i.InvoiceDate)
-				and inv.InvoiceDate <= i.InvoiceDate
-		)
-	) as SalesTotalAmountCumulativePerMonth
+		select sum(inl.Quantity * inl.UnitPrice)
+		from Sales.Invoices as inv
+			inner join Sales.InvoiceLines as inl on inl.InvoiceID = inv.InvoiceID
+		where (year(inv.InvoiceDate) * 100 + month(inv.InvoiceDate)) <= (year(i.InvoiceDate) * 100 + month(i.InvoiceDate))
+			and year(inv.InvoiceDate) >= 2015
+		) as AcumulativeMonthlyAmoumt
 from Sales.Invoices as i
+	inner join Sales.Customers as c on c.CustomerID = i.CustomerID
+	inner join Sales.InvoiceLines as il on il.InvoiceID = i.InvoiceID
 where year(i.InvoiceDate) >= 2015
-order by i.InvoiceDate
-
+order by (year(i.InvoiceDate) * 100 + month(i.InvoiceDate))
 /*
 2. Сделайте расчет суммы нарастающим итогом в предыдущем запросе с помощью оконной функции.
    Сравните производительность запросов 1 и 2 с помощью set statistics time, io on
 */
 
-select distinct
+select
 	i.InvoiceDate
-	,sum(il.Quantity * il.UnitPrice) over (partition by (year(i.InvoiceDate) * 100 + month(i.InvoiceDate)) order by i.InvoiceDate) as SalesTotalAmountCumulativePerMonth
+	,c.CustomerName
+	,i.InvoiceDate
+	,(il.Quantity * il.UnitPrice) as SalesAmount
+	,sum(il.Quantity * il.UnitPrice) over (order by (year(i.InvoiceDate) * 100 + month(i.InvoiceDate))) as AcumulativeMonthlyAmoumt
 from Sales.Invoices as i
+	inner join Sales.Customers as c on c.CustomerID = i.CustomerID
 	inner join Sales.InvoiceLines as il on il.InvoiceID = i.InvoiceID
 where year(i.InvoiceDate) >= 2015
-order by i.InvoiceDate
+order by (year(i.InvoiceDate) * 100 + month(i.InvoiceDate))
 
 set statistics io off;  
 go 
