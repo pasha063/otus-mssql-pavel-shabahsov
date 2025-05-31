@@ -39,52 +39,26 @@ InvoiceMonth | Peeples Valley, AZ | Medicine Lodge, KS | Gasport, NY | Sylvanite
 -------------+--------------------+--------------------+-------------+--------------+------------
 */
 
-declare
-	@CustomerBranchName1 as varchar(255)
-	,@CustomerBranchName2 as varchar(255)
-	,@CustomerBranchName3 as varchar(255)
-	,@CustomerBranchName4 as varchar(255)
-	,@CustomerBranchName5 as varchar(255)
-	,@sql nvarchar(max)
-
-drop table if exists #Customers 
-
 select
-	CustomerID
-	,substring(
-		CustomerName
-		,charindex('(', CustomerName) + 1
-		,(charindex(')', CustomerName)) - (charindex('(', CustomerName) + 1)
-	) as CustomerBranchName
-into #Customers
-from Sales.Customers
-where CustomerID between 2 and 6
-
-set	@CustomerBranchName1 = (select CustomerBranchName from #Customers where CustomerID = 2)
-set	@CustomerBranchName2 = (select CustomerBranchName from #Customers where CustomerID = 3)
-set	@CustomerBranchName3 = (select CustomerBranchName from #Customers where CustomerID = 4)
-set	@CustomerBranchName4 = (select CustomerBranchName from #Customers where CustomerID = 5)
-set	@CustomerBranchName5 = (select CustomerBranchName from #Customers where CustomerID = 6)
-
-set @sql = '
+	InvoiceMonth
+	,[Sylvanite, MT]
+	,[Peeples Valley, AZ]
+	,[Medicine Lodge, KS]
+	,[Gasport, NY]
+	,[Jessie, ND]
+from (
 	select
-		InvoiceMonth
-		,[' + @CustomerBranchName1 + ']
-		,[' + @CustomerBranchName2 + ']
-		,[' + @CustomerBranchName3 + ']
-		,[' + @CustomerBranchName4 + ']
-		,[' + @CustomerBranchName5 + ']
-	from (
-		select
-			format(dateadd(month, datediff(month, 0, i.InvoiceDate), 0), ''dd.MM.yyyy'')  as InvoiceMonth
-			,c.CustomerBranchName
-		from Sales.Invoices as i
-			inner join #Customers as c on c.CustomerID = i.CustomerID
-	) as unpvt
-	pivot (count([CustomerBranchName]) for [CustomerBranchName] in ([' + @CustomerBranchName1 + '], [' + @CustomerBranchName2 + '], [' + @CustomerBranchName3 + '], [' + @CustomerBranchName4 + '], [' + @CustomerBranchName5 + '])) as pvt
-'
-exec sp_executesql @sql
-drop table if exists #Customers
+		format(dateadd(month, datediff(month, 0, i.InvoiceDate), 0), 'dd.MM.yyyy')  as InvoiceMonth
+		,substring(
+			c.CustomerName
+			,charindex('(', c.CustomerName) + 1
+			,(charindex(')', c.CustomerName)) - (charindex('(', c.CustomerName) + 1)
+		) as CustomerBranchName
+	from Sales.Invoices as i
+		inner join Sales.Customers as c on c.CustomerID = i.CustomerID 
+	where i.CustomerID between 2 and 6
+) as unpvt
+pivot (count([CustomerBranchName]) for [CustomerBranchName] in ([Sylvanite, MT], [Peeples Valley, AZ], [Medicine Lodge, KS], [Gasport, NY], [Jessie, ND])) as pvt
 
 /*
 2. Для всех клиентов с именем, в котором есть "Tailspin Toys"
@@ -101,14 +75,11 @@ Tailspin Toys (Head Office) | Ribeiroville
 ----------------------------+--------------------
 */
 
-;with cte_Tailspin_Toys_customers as (select distinct CustomerName from Sales.Customers where CustomerName like '%Tailspin Toys%')
-,cte_customerAdresses as (select distinct DeliveryAddressLine1 as AddressLine from Sales.Customers)
-
 select
 	CustomerName
 	,AddressLine
-from cte_Tailspin_Toys_customers
-	cross apply cte_customerAdresses
+from Sales.Customers
+unpivot (AddressLine for Addresses in ([DeliveryAddressLine1], [DeliveryAddressLine2], [PostalAddressLine1], [PostalAddressLine2])) as unpvt
 
 /*
 3. В таблице стран (Application.Countries) есть поля с цифровым кодом страны и с буквенным.
@@ -126,42 +97,19 @@ CountryId | CountryName | Code
 ----------+-------------+-------
 */
 
---Буквенный код (в задании: либо-либо)
 select
 	CountryID
 	,CountryName
-	,IsoAlpha3Code as Code
-from [Application].Countries
-
---Вариант с цифровым кодом
-select
-	CountryID
-	,CountryName
-	,IsoNumericCode as Code
-from [Application].Countries
-
---Вариант смешанный
-select
-	CountryID
-	,CountryName
-	,iif(CountryId % 2 = 0, IsoAlpha3Code, cast(IsoNumericCode as nvarchar(6))) as Code
-from [Application].Countries
-
---Вариант комбинированный как в примере, не подходящий под условия задачи
-select
-	CountryID
-	,CountryName
-	,IsoAlpha3Code as Code
-from [Application].Countries
-
-union all
-
-select
-	CountryID
-	,CountryName
-	,cast(IsoNumericCode as nvarchar(6))
-from [Application].Countries
-order by CountryID
+	,Code
+from (
+	select
+		CountryID
+		,CountryName
+		,cast(IsoAlpha3Code as nvarchar(6)) as SymbolCode
+		,cast(IsoNumericCode as nvarchar(6)) as NumericCode
+	from [Application].Countries
+) as Countries	
+unpivot (Code for Codes in ([SymbolCode], [NumericCode])) as unpvt
 
 /*
 4. Выберите по каждому клиенту два самых дорогих товара, которые он покупал.
