@@ -201,20 +201,33 @@ when not matched
 /*
 2. Выгрузить данные из таблицы StockItems в такой же xml-файл, как StockItems.xml
 */
+drop table if exists ##export 
 
-select
-    StockItemName as [@Name]
-	,SupplierID-- as SupplierID
-	,UnitPackageID as [Package/UnitPackageID]
-	,OuterPackageID as [Package/OuterPackageID]
-	,QuantityPerOuter as [Package/QuantityPerOuter]
-	,TypicalWeightPerUnit as [Package/TypicalWeightPerUnit]
-	,LeadTimeDays
-	,IsChillerStock
-	,TaxRate
-	,UnitPrice
-from Warehouse.StockItems
-for xml path('Item'), root('StockItems')
+create table ##export (xml_out nvarchar(max))
+insert into ##export (xml_out)
+select cast(
+	(
+		select
+			StockItemName AS [@Name],
+			SupplierID,
+			UnitPackageID AS [Package/UnitPackageID],
+			OuterPackageID AS [Package/OuterPackageID],
+			QuantityPerOuter AS [Package/QuantityPerOuter],
+			TypicalWeightPerUnit AS [Package/TypicalWeightPerUnit],
+			LeadTimeDays,
+			IsChillerStock,
+			TaxRate,
+			UnitPrice
+		from Warehouse.StockItems
+		for xml path('Item'), root('StockItems')
+	)
+as nvarchar(max))
+
+declare @out varchar(255);
+set @out = 'bcp "select xml_out from ##export" queryout "D:\courses\OTUS\lesson 11 - XML and JSON\demo.xml" -T -c -S ' + @@SERVERNAME
+
+exec master..xp_cmdshell @out
+
 
 
 /*
@@ -271,3 +284,6 @@ from Warehouse.StockItems as si
 		group by sti.StockItemID
 	) as t on t.StockItemID = si.StockItemID
 where j.value = 'Vintage'
+
+
+
