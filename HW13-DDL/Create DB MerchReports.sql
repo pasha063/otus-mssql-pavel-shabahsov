@@ -21,11 +21,11 @@ CREATE TABLE [ref].[tbl_Date](
 	[Date] [date] NOT NULL,
 	[YearMonth] [int] NOT NULL,
 	[YearWeek] [int] NOT NULL,
- CONSTRAINT [PK_ref_tbl_Date] PRIMARY KEY CLUSTERED
+ CONSTRAINT [PK_ref_tbl_Date] PRIMARY KEY CLUSTERED 
 (
 	[ID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY],
- CONSTRAINT [UK_tbl_Date_Date] UNIQUE NONCLUSTERED
+ CONSTRAINT [UK_tbl_Date_Date] UNIQUE NONCLUSTERED 
 (
 	[Date] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
@@ -35,7 +35,7 @@ GO
 CREATE TABLE [ref].[tbl_RetailChain](
 	[SK_RetailChain_ID] [bigint] NOT NULL,
 	[Name] [nvarchar](255) NULL,
- CONSTRAINT [PK_ref_tbl_RetailChain] PRIMARY KEY CLUSTERED
+ CONSTRAINT [PK_ref_tbl_RetailChain] PRIMARY KEY CLUSTERED 
 (
 	[SK_RetailChain_ID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
@@ -52,11 +52,11 @@ CREATE TABLE [ref].[tbl_Outlets](
 	[GeographyTown] [nvarchar](255) NOT NULL,
 	[Latitude] [decimal](6, 4) NOT NULL,
 	[Longitude] [decimal](6, 4) NOT NULL,
- CONSTRAINT [PK_ref_tbl_Outlets] PRIMARY KEY CLUSTERED
+ CONSTRAINT [PK_ref_tbl_Outlets] PRIMARY KEY CLUSTERED 
 (
 	[SK_Outlet_ID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY],
- CONSTRAINT [UK_tbl_Outlets_Code] UNIQUE NONCLUSTERED
+ CONSTRAINT [UK_tbl_Outlets_Code] UNIQUE NONCLUSTERED 
 (
 	[Code] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
@@ -74,11 +74,11 @@ CREATE TABLE [ref].[tbl_Positions](
 	[SK_Position_ID] [bigint] NOT NULL,
 	[Code] [nvarchar](50) NOT NULL,
 	[Manager] [nvarchar](50) NOT NULL,
- CONSTRAINT [PK_ref_tbl_Positions] PRIMARY KEY CLUSTERED
+ CONSTRAINT [PK_ref_tbl_Positions] PRIMARY KEY CLUSTERED 
 (
 	[SK_Position_ID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY],
- CONSTRAINT [UK_tbl_Positions_Code] UNIQUE NONCLUSTERED
+ CONSTRAINT [UK_tbl_Positions_Code] UNIQUE NONCLUSTERED 
 (
 	[Code] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
@@ -97,7 +97,7 @@ GO
 CREATE TABLE [ref].[tbl_MerchCalendar](
 	[fldMonth] [int] NOT NULL,
 	[MonthCoefficient] [decimal](10, 9) NOT NULL,
- CONSTRAINT [UK_tbl_MerchCalendar_fldMonth] UNIQUE NONCLUSTERED
+ CONSTRAINT [UK_tbl_MerchCalendar_fldMonth] UNIQUE NONCLUSTERED 
 (
 	[fldMonth] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
@@ -111,11 +111,11 @@ CREATE TABLE [ref].[tbl_MerchKPI](
 	[FlagActive] [bit] NOT NULL,
 	[QuestionName] [nvarchar](255) NULL,
 	[SP_DocumentName] [nvarchar](255) NULL,
-PRIMARY KEY CLUSTERED
+PRIMARY KEY CLUSTERED 
 (
 	[ID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY],
- CONSTRAINT [UK_tbl_MerchKPI_Code] UNIQUE NONCLUSTERED
+ CONSTRAINT [UK_tbl_MerchKPI_Code] UNIQUE NONCLUSTERED 
 (
 	[Code] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
@@ -130,7 +130,7 @@ CREATE TABLE [ref].[tbl_MerchKPIGrades](
 	[KPI] [nvarchar](10) NOT NULL,
 	[Grade] [int] NOT NULL,
 	[Execution] [decimal](9, 6) NOT NULL,
- CONSTRAINT [UK_tbl_MerchKPIGrades_fldMonth_KPI_Grade] UNIQUE NONCLUSTERED
+ CONSTRAINT [UK_tbl_MerchKPIGrades_fldMonth_KPI_Grade] UNIQUE NONCLUSTERED 
 (
 	[fldMonth] ASC,
 	[KPI] ASC,
@@ -144,7 +144,7 @@ CREATE TABLE [ref].[tbl_MerchBaseCity](
 	[BaseCity] [nvarchar](255) NOT NULL,
 	[isActive] [bit] NOT NULL,
 	[CoverStatus] [bit] NOT NULL,
- CONSTRAINT [UK_tbl_MerchBaseCity_OutletCode] UNIQUE NONCLUSTERED
+ CONSTRAINT [UK_tbl_MerchBaseCity_OutletCode] UNIQUE NONCLUSTERED 
 (
 	[OutletCode] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
@@ -174,7 +174,7 @@ CREATE TABLE [merch].[tbl_Visits](
 	[SK_Time_ID_End] [int] NOT NULL,
 	[VisitTimeSec] [int] NOT NULL,
 	[PhotoFileName] [nvarchar](max) NULL,
- CONSTRAINT [PK_ref_tbl_Visits] PRIMARY KEY CLUSTERED
+ CONSTRAINT [PK_ref_tbl_Visits] PRIMARY KEY CLUSTERED 
 (
 	[SK_Visit_ID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
@@ -515,7 +515,7 @@ CREATE TABLE [merch].[tbl_VisitFactCost](
 	[Photo] [varchar](max) NULL,
 	[PaymentCost] [decimal](16, 8) NULL,
 	[FinalPaymentCost] [decimal](16, 8) NULL
-) ON [PRIMARY]
+) ON [PRIMARY] 
 GO
 
 CREATE TABLE [merch].[tbl_HourCost](
@@ -527,7 +527,7 @@ CREATE TABLE [merch].[tbl_HourCost](
 	[HourCost] [decimal](18, 6) NULL,
 	[VisitCost] [decimal](18, 6) NULL,
 	[VisitCostPerWeek] [decimal](18, 6) NULL,
- CONSTRAINT [PK_tblMerchHourCost] PRIMARY KEY CLUSTERED
+ CONSTRAINT [PK_tblMerchHourCost] PRIMARY KEY CLUSTERED 
 (
 	[fldMonth] ASC,
 	[OutletCode] ASC
@@ -547,7 +547,7 @@ as
 			,Value
 			,row_number() over(
 				partition by fldMonth, OutletCode, KPI, left(Type, 4)
-				order by iif(right(Type, 3) = 'exc', 1, 2) --   exeption,   
+				order by iif(right(Type, 3) = 'exc', 1, 2) -- если загружен exсeption, то берем его 
 			) as rn
 		from merch.tbl_POSPlan
 	)
@@ -555,9 +555,9 @@ as
 		hc.Agency
 		,hc.fldMonth as Period
 		,hc.OutletCode
-		,'Some chain' as []
+		,'Some chain' as [Сеть]
 		,o.AddressFull
-		,bc.BaseCity as [ ]
+		,bc.BaseCity as [Базовый город]
 		,o.GeographyRegion
 		,hc.GeoCity				as [Geography Town]
 		,o.Latitude
@@ -565,7 +565,7 @@ as
 		,mv.VisitTimeMinutesMin as [Time Minimum per visit, minutes]
 		,mv.VisitTimeMinutes as [Time per visit, minutes]
 		,mv.VisitPerWeek as [Visit per week]
-		,mv.HoursStandart as [    FS/ST]
+		,mv.HoursStandart as [Стандарт часов в день FS/ST]
 		,hc.HourCost as [Hour Cost]
 		,hc.VisitCost as [Visit Cost]
 		,hc.VisitCostPerWeek as [Visits cost per week]
@@ -584,7 +584,7 @@ go
 
 ;CREATE view [merch].[vw_VisitFactCost]
 as
-
+ 
 	select
 		cast(SK_Visit_ID as varchar(30)) as Visit_ID
 		,Agency
@@ -592,70 +592,70 @@ as
 		,YearWeek as [Week]
 		,fldMonth
 		,OutletCode
-		,ChainName as []
-		,OutletType as [ ]
-		,AddressFull as []
-		,iif(isOutletBaseCityCovered = 1, '', '') as [  ]
+		,ChainName as [Сеть]
+		,OutletType as [Тип ТТ]
+		,AddressFull as [Адрес]
+		,iif(isOutletBaseCityCovered = 1, 'да', 'нет') as [Точка к покрытию]
 		,RSM
 		,ASM
 		,Manager as [Territory TM]
 		--,EmployeeCode
-		,BaseCity as [ ]
+		,BaseCity as [Базовый город]
 		,GeographyRegion as [Geography Reg]
 		,GeographyTown as [Geography Town]
-		,Latitude as []
-		,Longitude as []
+		,Latitude as [Широта]
+		,Longitude as [Долгота]
 		,VisitTimeMinutesMin as [Time Minimum per visit, minutes]
 		,VisitTimeMinutes as [Time per visit, minutes]
 		,VisitPerWeek as [Visit per week]
-		,HoursStandart as [    FS/ST]
-		,MonthCoefficient as [  ]
+		,HoursStandart as [Стандарт часов в день FS/ST]
+		,MonthCoefficient as [Коэфф произв календаря]
 		,HourCost_Base_KPI_AK as [Hour cost (Base+KPI+AK)]
 		,VisitCost_Base_KPI_AK as [Visit cost (Base+KPI+AK)]
 		,VisitCost_Base_AK as [Visit cost (Base+AK)]
 		,VisitCost_KPI_AK as [Visit cost (KPI 100% +AK)]
-		,Position_Name as [  (FS ST)]
-		,VisitTimeBegin as [  ]
-		,VisitTimeEnd as [  ]
-		,datediff(minute, VisitTimeBegin, VisitTimeEnd) as [   ]
-		,LongitudeBegin as [   ]
-		,LatitudeBegin as [   ]
-		,DistanceFromOutletBegin as [     , ]
-		,LongitudeEnd as [   ]
-		,LatitudeEnd as [   ]
-		,DistanceFromOutletEnd as [     , ]
-		,TimeSincePreviousVisit as [     ]
-		,iif(TaskPass = 1, 1, 0) as [       (1/0)]
-		,iif(CoordinatesPass = 1, 1, 0) as [     (1/0)]
-		,iif(VisitsPerWeekPass = 1, 1, 0) as [  -    (1/0)]
-		,iif(MinimumTimeVisitPass = 1, 1, 0) as [    ]
-		,iif(DaysCountVisitPass = 1, 1, 0) as [        visit_id]
-		,iif(VisitPass = 1, 1, 0) as [   ]
+		,Position_Name as [Автор визита (FS ST)]
+		,VisitTimeBegin as [Время начала визита]
+		,VisitTimeEnd as [Время конца визита]
+		,datediff(minute, VisitTimeBegin, VisitTimeEnd) as [Длительность визита в минутах]
+		,LongitudeBegin as [коор факт входа долгота]
+		,LatitudeBegin as [коор факт входа широта]
+		,DistanceFromOutletBegin as [отклонение координат входа от эталонной точки, метров]
+		,LongitudeEnd as [коор факт выхода долгота]
+		,LatitudeEnd as [коор факт выхода широта]
+		,DistanceFromOutletEnd as [отклонение координат выхода от эталонной точки, метров]
+		,TimeSincePreviousVisit as [время с завершения предыдущего  визита]
+		,iif(TaskPass = 1, 1, 0) as [зачет визита по соответствию наличия в задании (1/0)]
+		,iif(CoordinatesPass = 1, 1, 0) as [зачет визита по координа там (1/0)]
+		,iif(VisitsPerWeekPass = 1, 1, 0) as [зачет визита кол-ву в квлендарную неделю (1/0)]
+		,iif(MinimumTimeVisitPass = 1, 1, 0) as [зачет по времени в день]
+		,iif(DaysCountVisitPass = 1, 1, 0) as [зачет по самому длительному посещению в рамках одного visit_id]
+		,iif(VisitPass = 1, 1, 0) as [ИТОГО зачет визита СИСТЕМОЙ]
 		,CoordinatorVisitException as [Crd-Visit-Exc]
-		,AgencyComment as [    ]
+		,AgencyComment as [комментарий эксепшена от координатора агентства]
 		,InspectorVisitException as [Insp-Visit-Exc]
-		,InspectorComment as [   ]
+		,InspectorComment as [комментарий эксепшена от инспектора]
 		,JDEVisitException as [JDE-Visit-Exc]
-		,JDEComment as [   JDE]
-		,FinalVisitPass as [   ]
+		,JDEComment as [комментарий эксепшена от JDE]
+		,FinalVisitPass as [ИТОГО зачет визита ФИНАЛЬНЫЙ]
 		,KPI
 		,[Plan]
 		,Fact
 		,[Fact / Plan]
 		,Execution
 		,AuditorValue as [Aud]
-		,AuditorComment as [ ]
+		,AuditorComment as [комментарий аудитора]
 		,AppealValue as [Appeal]
-		,AppealComment as [  ]
+		,AppealComment as [апелляция от агентсва]
 		,JDEAuditorValue as [JDE-Aud]
-		,JDEAuditorComment as [    JDE]
-		,FinalExecution as [Exec   ]
-		,[Weight] as []
-		,PaymentCost as [Visit cost  ]
+		,JDEAuditorComment as [итоговое приняте апелляции от JDE]
+		,FinalExecution as [Exec с учетом проверок]
+		,[Weight] as [Вес]
+		,PaymentCost as [Visit cost к выплате]
 		,TMDigitalAuditCoefficient as [TM_digital-audit]
 		,TMFieldAuditCoefficient as [TM_field-audit]
-		,FinalPaymentCost as [ Visit cost  ]
-		,Photo as []
+		,FinalPaymentCost as [Итого Visit cost к выплате]
+		,Photo as [Фото]
 	from merch.tbl_VisitFactCost
 
 GO
