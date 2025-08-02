@@ -1,0 +1,59 @@
+1	Imp	Imp	1	Кол-во боксов (/карманов) с импульсным ассортиментом JDE в ТТ	NULL
+2	OSA	OSA	1	NULL	NULL
+3	SP	SP	1	NULL	NULL
+4	SP_0	SP_0	1	NULL	Мониторинг дополнительных мест
+5	SP_1	SP_1	1	NULL	ДМП №1
+6	SP_10	SP_10	1	NULL	ДМП №10
+7	SP_11	SP_11	1	NULL	ДМП №11
+8	SP_12	SP_12	1	NULL	ДМП №12
+9	SP_13	SP_13	1	NULL	ДМП №13
+10	SP_14	SP_14	1	NULL	ДМП №14
+11	SP_15	SP_15	1	NULL	ДМП №15
+12	SP_16	SP_16	1	NULL	ДМП №16
+13	SP_17	SP_17	1	NULL	ДМП №17
+14	SP_18	SP_18	1	NULL	ДМП №18
+15	SP_19	SP_19	1	NULL	ДМП №19
+16	SP_2	SP_2	1	NULL	ДМП №2
+17	SP_20	SP_20	1	NULL	ДМП №20
+18	SP_21	SP_21	1	NULL	ДМП №21
+19	SP_22	SP_22	1	NULL	ДМП №22
+20	SP_23	SP_23	1	NULL	ДМП №23
+21	SP_24	SP_24	1	NULL	ДМП №24
+22	SP_25	SP_25	1	NULL	ДМП №25
+23	SP_26	SP_26	1	NULL	ДМП №26
+24	SP_27	SP_27	1	NULL	ДМП №27
+25	SP_28	SP_28	1	NULL	ДМП №28
+26	SP_29	SP_29	1	NULL	ДМП №29
+27	SP_3	SP_3	1	NULL	ДМП №3
+28	SP_30	SP_30	1	NULL	ДМП №30
+29	SP_31	SP_31	1	NULL	ДМП №31
+30	SP_32	SP_32	1	NULL	ДМП №32
+31	SP_33	SP_33	1	NULL	ДМП №33
+32	SP_34	SP_34	1	NULL	ДМП №34
+33	SP_35	SP_35	1	NULL	ДМП №35
+34	SP_36	SP_36	1	NULL	ДМП №36
+35	SP_37	SP_37	1	NULL	ДМП №37
+36	SP_38	SP_38	1	NULL	ДМП №38
+37	SP_39	SP_39	1	NULL	ДМП №39
+38	SP_4	SP_4	1	NULL	ДМП №4
+39	SP_40	SP_40	1	NULL	ДМП №40
+40	SP_41	SP_41	1	NULL	ДМП №41
+41	SP_42	SP_42	1	NULL	ДМП №42
+42	SP_43	SP_43	1	NULL	ДМП №43
+43	SP_44	SP_44	1	NULL	ДМП №44
+44	SP_45	SP_45	1	NULL	ДМП №45
+45	SP_46	SP_46	1	NULL	ДМП №46
+46	SP_47	SP_47	1	NULL	ДМП №47
+47	SP_48	SP_48	1	NULL	ДМП №48
+48	SP_49	SP_49	1	NULL	ДМП №49
+49	SP_5	SP_5	1	NULL	ДМП №5
+50	SP_50	SP_50	1	NULL	ДМП №50
+51	SP_6	SP_6	1	NULL	ДМП №6
+52	SP_7	SP_7	1	NULL	ДМП №7
+53	SP_8	SP_8	1	NULL	ДМП №8
+54	SP_9	SP_9	1	NULL	ДМП №9
+55	SS_Caps	SS_Caps	1	Какой процент полки занимает JDE в категории капсулы?	NULL
+56	SS_Imp	SS_Imp	0	Кол-во мест для размещения импульсного ассортимента?	NULL
+57	SS_MS	SS_MS	1	Какой процент полки занимает JDE в категории RG and Beans?	NULL
+58	SS_PI	SS_PI	1	Какой  процент полки занимает JDE в категории растворимого кофе?	NULL
+59	Visit	Visit	1	NULL	NULL
