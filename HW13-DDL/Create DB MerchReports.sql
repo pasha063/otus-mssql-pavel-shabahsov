@@ -21,11 +21,11 @@ CREATE TABLE [ref].[tbl_Date](
 	[Date] [date] NOT NULL,
 	[YearMonth] [int] NOT NULL,
 	[YearWeek] [int] NOT NULL,
- CONSTRAINT [PK_ref_tbl_Date] PRIMARY KEY CLUSTERED 
+ CONSTRAINT [PK_ref_tbl_Date] PRIMARY KEY CLUSTERED
 (
 	[ID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY],
- CONSTRAINT [UK_tbl_Date_Date] UNIQUE NONCLUSTERED 
+ CONSTRAINT [UK_tbl_Date_Date] UNIQUE NONCLUSTERED
 (
 	[Date] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
@@ -35,7 +35,7 @@ GO
 CREATE TABLE [ref].[tbl_RetailChain](
 	[SK_RetailChain_ID] [bigint] NOT NULL,
 	[Name] [nvarchar](255) NULL,
- CONSTRAINT [PK_ref_tbl_RetailChain] PRIMARY KEY CLUSTERED 
+ CONSTRAINT [PK_ref_tbl_RetailChain] PRIMARY KEY CLUSTERED
 (
 	[SK_RetailChain_ID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
@@ -52,11 +52,11 @@ CREATE TABLE [ref].[tbl_Outlets](
 	[GeographyTown] [nvarchar](255) NOT NULL,
 	[Latitude] [decimal](6, 4) NOT NULL,
 	[Longitude] [decimal](6, 4) NOT NULL,
- CONSTRAINT [PK_ref_tbl_Outlets] PRIMARY KEY CLUSTERED 
+ CONSTRAINT [PK_ref_tbl_Outlets] PRIMARY KEY CLUSTERED
 (
 	[SK_Outlet_ID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY],
- CONSTRAINT [UK_tbl_Outlets_Code] UNIQUE NONCLUSTERED 
+ CONSTRAINT [UK_tbl_Outlets_Code] UNIQUE NONCLUSTERED
 (
 	[Code] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
@@ -74,11 +74,11 @@ CREATE TABLE [ref].[tbl_Positions](
 	[SK_Position_ID] [bigint] NOT NULL,
 	[Code] [nvarchar](50) NOT NULL,
 	[Manager] [nvarchar](50) NOT NULL,
- CONSTRAINT [PK_ref_tbl_Positions] PRIMARY KEY CLUSTERED 
+ CONSTRAINT [PK_ref_tbl_Positions] PRIMARY KEY CLUSTERED
 (
 	[SK_Position_ID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY],
- CONSTRAINT [UK_tbl_Positions_Code] UNIQUE NONCLUSTERED 
+ CONSTRAINT [UK_tbl_Positions_Code] UNIQUE NONCLUSTERED
 (
 	[Code] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
@@ -97,7 +97,7 @@ GO
 CREATE TABLE [ref].[tbl_MerchCalendar](
 	[fldMonth] [int] NOT NULL,
 	[MonthCoefficient] [decimal](10, 9) NOT NULL,
- CONSTRAINT [UK_tbl_MerchCalendar_fldMonth] UNIQUE NONCLUSTERED 
+ CONSTRAINT [UK_tbl_MerchCalendar_fldMonth] UNIQUE NONCLUSTERED
 (
 	[fldMonth] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
@@ -111,11 +111,11 @@ CREATE TABLE [ref].[tbl_MerchKPI](
 	[FlagActive] [bit] NOT NULL,
 	[QuestionName] [nvarchar](255) NULL,
 	[SP_DocumentName] [nvarchar](255) NULL,
-PRIMARY KEY CLUSTERED 
+PRIMARY KEY CLUSTERED
 (
 	[ID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY],
- CONSTRAINT [UK_tbl_MerchKPI_Code] UNIQUE NONCLUSTERED 
+ CONSTRAINT [UK_tbl_MerchKPI_Code] UNIQUE NONCLUSTERED
 (
 	[Code] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
@@ -130,7 +130,7 @@ CREATE TABLE [ref].[tbl_MerchKPIGrades](
 	[KPI] [nvarchar](10) NOT NULL,
 	[Grade] [int] NOT NULL,
 	[Execution] [decimal](9, 6) NOT NULL,
- CONSTRAINT [UK_tbl_MerchKPIGrades_fldMonth_KPI_Grade] UNIQUE NONCLUSTERED 
+ CONSTRAINT [UK_tbl_MerchKPIGrades_fldMonth_KPI_Grade] UNIQUE NONCLUSTERED
 (
 	[fldMonth] ASC,
 	[KPI] ASC,
@@ -144,7 +144,7 @@ CREATE TABLE [ref].[tbl_MerchBaseCity](
 	[BaseCity] [nvarchar](255) NOT NULL,
 	[isActive] [bit] NOT NULL,
 	[CoverStatus] [bit] NOT NULL,
- CONSTRAINT [UK_tbl_MerchBaseCity_OutletCode] UNIQUE NONCLUSTERED 
+ CONSTRAINT [UK_tbl_MerchBaseCity_OutletCode] UNIQUE NONCLUSTERED
 (
 	[OutletCode] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
@@ -174,7 +174,7 @@ CREATE TABLE [merch].[tbl_Visits](
 	[SK_Time_ID_End] [int] NOT NULL,
 	[VisitTimeSec] [int] NOT NULL,
 	[PhotoFileName] [nvarchar](max) NULL,
- CONSTRAINT [PK_ref_tbl_RetailChain] PRIMARY KEY CLUSTERED 
+ CONSTRAINT [PK_ref_tbl_RetailChain] PRIMARY KEY CLUSTERED
 (
 	[SK_Visit_ID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
@@ -515,7 +515,7 @@ CREATE TABLE [merch].[tbl_VisitFactCost](
 	[Photo] [varchar](max) NULL,
 	[PaymentCost] [decimal](16, 8) NULL,
 	[FinalPaymentCost] [decimal](16, 8) NULL
-) ON [PRIMARY] 
+) ON [PRIMARY]
 GO
 
 CREATE TABLE [merch].[tbl_HourCost](
@@ -527,7 +527,7 @@ CREATE TABLE [merch].[tbl_HourCost](
 	[HourCost] [decimal](18, 6) NULL,
 	[VisitCost] [decimal](18, 6) NULL,
 	[VisitCostPerWeek] [decimal](18, 6) NULL,
- CONSTRAINT [PK_tblMerchHourCost] PRIMARY KEY CLUSTERED 
+ CONSTRAINT [PK_tblMerchHourCost] PRIMARY KEY CLUSTERED
 (
 	[fldMonth] ASC,
 	[OutletCode] ASC
@@ -547,7 +547,7 @@ as
 			,Value
 			,row_number() over(
 				partition by fldMonth, OutletCode, KPI, left(Type, 4)
-				order by iif(right(Type, 3) = 'exc', 1, 2) -- если загружен exсeption, то берем его 
+				order by iif(right(Type, 3) = 'exc', 1, 2) -- если загружен exсeption, то берем его
 			) as rn
 		from merch.tbl_POSPlan
 	)
@@ -584,7 +584,7 @@ go
 
 ;CREATE view [merch].[vw_VisitFactCost]
 as
- 
+
 	select
 		cast(SK_Visit_ID as varchar(30)) as Visit_ID
 		,Agency
