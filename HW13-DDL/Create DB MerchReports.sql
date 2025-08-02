@@ -547,7 +547,7 @@ as
 			,Value
 			,row_number() over(
 				partition by fldMonth, OutletCode, KPI, left(Type, 4)
-				order by iif(right(Type, 3) = 'exc', 1, 2) -- ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ exï¿½eption, ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
+				order by iif(right(Type, 3) = 'exc', 1, 2) -- ˜˜˜˜ ˜˜˜˜˜˜˜˜ ex˜eption, ˜˜ ˜˜˜˜˜ ˜˜˜
 			) as rn
 		from merch.tbl_POSPlan
 	)
@@ -555,9 +555,9 @@ as
 		hc.Agency
 		,hc.fldMonth as Period
 		,hc.OutletCode
-		,'Some chain' as [ï¿½ï¿½ï¿½ï¿½]
+		,'Some chain' as [˜˜˜˜]
 		,o.AddressFull
-		,bc.BaseCity as [ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½]
+		,bc.BaseCity as [˜˜˜˜˜˜˜ ˜˜˜˜˜]
 		,o.GeographyRegion
 		,hc.GeoCity				as [Geography Town]
 		,o.Latitude
@@ -565,7 +565,7 @@ as
 		,mv.VisitTimeMinutesMin as [Time Minimum per visit, minutes]
 		,mv.VisitTimeMinutes as [Time per visit, minutes]
 		,mv.VisitPerWeek as [Visit per week]
-		,mv.HoursStandart as [ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ FS/ST]
+		,mv.HoursStandart as [˜˜˜˜˜˜˜˜ ˜˜˜˜˜ ˜ ˜˜˜˜ FS/ST]
 		,hc.HourCost as [Hour Cost]
 		,hc.VisitCost as [Visit Cost]
 		,hc.VisitCostPerWeek as [Visits cost per week]
@@ -592,70 +592,70 @@ as
 		,YearWeek as [Week]
 		,fldMonth
 		,OutletCode
-		,ChainName as [ï¿½ï¿½ï¿½ï¿½]
-		,OutletType as [ï¿½ï¿½ï¿½ ï¿½ï¿½]
-		,AddressFull as [ï¿½ï¿½ï¿½ï¿½ï¿½]
-		,iif(isOutletBaseCityCovered = 1, 'ï¿½ï¿½', 'ï¿½ï¿½ï¿½') as [ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½]
+		,ChainName as [˜˜˜˜]
+		,OutletType as [˜˜˜ ˜˜]
+		,AddressFull as [˜˜˜˜˜]
+		,iif(isOutletBaseCityCovered = 1, '˜˜', '˜˜˜') as [˜˜˜˜˜ ˜ ˜˜˜˜˜˜˜˜]
 		,RSM
 		,ASM
 		,Manager as [Territory TM]
 		--,EmployeeCode
-		,BaseCity as [ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½]
+		,BaseCity as [˜˜˜˜˜˜˜ ˜˜˜˜˜]
 		,GeographyRegion as [Geography Reg]
 		,GeographyTown as [Geography Town]
-		,Latitude as [ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½]
-		,Longitude as [ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½]
+		,Latitude as [˜˜˜˜˜˜]
+		,Longitude as [˜˜˜˜˜˜˜]
 		,VisitTimeMinutesMin as [Time Minimum per visit, minutes]
 		,VisitTimeMinutes as [Time per visit, minutes]
 		,VisitPerWeek as [Visit per week]
-		,HoursStandart as [ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ FS/ST]
-		,MonthCoefficient as [ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½]
+		,HoursStandart as [˜˜˜˜˜˜˜˜ ˜˜˜˜˜ ˜ ˜˜˜˜ FS/ST]
+		,MonthCoefficient as [˜˜˜˜˜ ˜˜˜˜˜˜ ˜˜˜˜˜˜˜˜˜]
 		,HourCost_Base_KPI_AK as [Hour cost (Base+KPI+AK)]
 		,VisitCost_Base_KPI_AK as [Visit cost (Base+KPI+AK)]
 		,VisitCost_Base_AK as [Visit cost (Base+AK)]
 		,VisitCost_KPI_AK as [Visit cost (KPI 100% +AK)]
-		,Position_Name as [ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ (FS ST)]
-		,VisitTimeBegin as [ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½]
-		,VisitTimeEnd as [ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½]
-		,datediff(minute, VisitTimeBegin, VisitTimeEnd) as [ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½]
-		,LongitudeBegin as [ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½]
-		,LatitudeBegin as [ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½]
-		,DistanceFromOutletBegin as [ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½]
-		,LongitudeEnd as [ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½]
-		,LatitudeEnd as [ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½]
-		,DistanceFromOutletEnd as [ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½]
-		,TimeSincePreviousVisit as [ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½]
-		,iif(TaskPass = 1, 1, 0) as [ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ (1/0)]
-		,iif(CoordinatesPass = 1, 1, 0) as [ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ (1/0)]
-		,iif(VisitsPerWeekPass = 1, 1, 0) as [ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½-ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ (1/0)]
-		,iif(MinimumTimeVisitPass = 1, 1, 0) as [ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½]
-		,iif(DaysCountVisitPass = 1, 1, 0) as [ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ visit_id]
-		,iif(VisitPass = 1, 1, 0) as [ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½]
+		,Position_Name as [˜˜˜˜˜ ˜˜˜˜˜˜ (FS ST)]
+		,VisitTimeBegin as [˜˜˜˜˜ ˜˜˜˜˜˜ ˜˜˜˜˜˜]
+		,VisitTimeEnd as [˜˜˜˜˜ ˜˜˜˜˜ ˜˜˜˜˜˜]
+		,datediff(minute, VisitTimeBegin, VisitTimeEnd) as [˜˜˜˜˜˜˜˜˜˜˜˜ ˜˜˜˜˜˜ ˜ ˜˜˜˜˜˜˜]
+		,LongitudeBegin as [˜˜˜˜ ˜˜˜˜ ˜˜˜˜˜ ˜˜˜˜˜˜˜]
+		,LatitudeBegin as [˜˜˜˜ ˜˜˜˜ ˜˜˜˜˜ ˜˜˜˜˜˜]
+		,DistanceFromOutletBegin as [˜˜˜˜˜˜˜˜˜˜ ˜˜˜˜˜˜˜˜˜ ˜˜˜˜˜ ˜˜ ˜˜˜˜˜˜˜˜˜ ˜˜˜˜˜, ˜˜˜˜˜˜]
+		,LongitudeEnd as [˜˜˜˜ ˜˜˜˜ ˜˜˜˜˜˜ ˜˜˜˜˜˜˜]
+		,LatitudeEnd as [˜˜˜˜ ˜˜˜˜ ˜˜˜˜˜˜ ˜˜˜˜˜˜]
+		,DistanceFromOutletEnd as [˜˜˜˜˜˜˜˜˜˜ ˜˜˜˜˜˜˜˜˜ ˜˜˜˜˜˜ ˜˜ ˜˜˜˜˜˜˜˜˜ ˜˜˜˜˜, ˜˜˜˜˜˜]
+		,TimeSincePreviousVisit as [˜˜˜˜˜ ˜ ˜˜˜˜˜˜˜˜˜˜ ˜˜˜˜˜˜˜˜˜˜˜  ˜˜˜˜˜˜]
+		,iif(TaskPass = 1, 1, 0) as [˜˜˜˜˜ ˜˜˜˜˜˜ ˜˜ ˜˜˜˜˜˜˜˜˜˜˜˜ ˜˜˜˜˜˜˜ ˜ ˜˜˜˜˜˜˜ (1/0)]
+		,iif(CoordinatesPass = 1, 1, 0) as [˜˜˜˜˜ ˜˜˜˜˜˜ ˜˜ ˜˜˜˜˜˜˜˜ ˜˜˜ (1/0)]
+		,iif(VisitsPerWeekPass = 1, 1, 0) as [˜˜˜˜˜ ˜˜˜˜˜˜ ˜˜˜-˜˜ ˜ ˜˜˜˜˜˜˜˜˜˜˜ ˜˜˜˜˜˜ (1/0)]
+		,iif(MinimumTimeVisitPass = 1, 1, 0) as [˜˜˜˜˜ ˜˜ ˜˜˜˜˜˜˜ ˜ ˜˜˜˜]
+		,iif(DaysCountVisitPass = 1, 1, 0) as [˜˜˜˜˜ ˜˜ ˜˜˜˜˜˜ ˜˜˜˜˜˜˜˜˜˜˜ ˜˜˜˜˜˜˜˜˜ ˜ ˜˜˜˜˜˜ ˜˜˜˜˜˜ visit_id]
+		,iif(VisitPass = 1, 1, 0) as [˜˜˜˜˜ ˜˜˜˜˜ ˜˜˜˜˜˜ ˜˜˜˜˜˜˜˜]
 		,CoordinatorVisitException as [Crd-Visit-Exc]
-		,AgencyComment as [ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½]
+		,AgencyComment as [˜˜˜˜˜˜˜˜˜˜˜ ˜˜˜˜˜˜˜˜˜ ˜˜ ˜˜˜˜˜˜˜˜˜˜˜˜ ˜˜˜˜˜˜˜˜˜]
 		,InspectorVisitException as [Insp-Visit-Exc]
-		,InspectorComment as [ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½]
+		,InspectorComment as [˜˜˜˜˜˜˜˜˜˜˜ ˜˜˜˜˜˜˜˜˜ ˜˜ ˜˜˜˜˜˜˜˜˜˜]
 		,JDEVisitException as [JDE-Visit-Exc]
-		,JDEComment as [ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ JDE]
-		,FinalVisitPass as [ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½]
+		,JDEComment as [˜˜˜˜˜˜˜˜˜˜˜ ˜˜˜˜˜˜˜˜˜ ˜˜ JDE]
+		,FinalVisitPass as [˜˜˜˜˜ ˜˜˜˜˜ ˜˜˜˜˜˜ ˜˜˜˜˜˜˜˜˜]
 		,KPI
 		,[Plan]
 		,Fact
 		,[Fact / Plan]
 		,Execution
 		,AuditorValue as [Aud]
-		,AuditorComment as [ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½]
+		,AuditorComment as [˜˜˜˜˜˜˜˜˜˜˜ ˜˜˜˜˜˜˜˜]
 		,AppealValue as [Appeal]
-		,AppealComment as [ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½]
+		,AppealComment as [˜˜˜˜˜˜˜˜˜ ˜˜ ˜˜˜˜˜˜˜˜]
 		,JDEAuditorValue as [JDE-Aud]
-		,JDEAuditorComment as [ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ JDE]
-		,FinalExecution as [Exec ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½]
-		,[Weight] as [ï¿½ï¿½ï¿½]
-		,PaymentCost as [Visit cost ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½]
+		,JDEAuditorComment as [˜˜˜˜˜˜˜˜ ˜˜˜˜˜˜˜ ˜˜˜˜˜˜˜˜˜ ˜˜ JDE]
+		,FinalExecution as [Exec ˜ ˜˜˜˜˜˜ ˜˜˜˜˜˜˜˜]
+		,[Weight] as [˜˜˜]
+		,PaymentCost as [Visit cost ˜ ˜˜˜˜˜˜˜]
 		,TMDigitalAuditCoefficient as [TM_digital-audit]
 		,TMFieldAuditCoefficient as [TM_field-audit]
-		,FinalPaymentCost as [ï¿½ï¿½ï¿½ï¿½ï¿½ Visit cost ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½]
-		,Photo as [ï¿½ï¿½ï¿½ï¿½]
+		,FinalPaymentCost as [˜˜˜˜˜ Visit cost ˜ ˜˜˜˜˜˜˜]
+		,Photo as [˜˜˜˜]
 	from merch.tbl_VisitFactCost
 
 GO
