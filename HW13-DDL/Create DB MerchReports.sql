@@ -547,7 +547,7 @@ as
 			,Value
 			,row_number() over(
 				partition by fldMonth, OutletCode, KPI, left(Type, 4)
-				order by iif(right(Type, 3) = 'exc', 1, 2) -- если загружен exсeption, то берем его 
+				order by iif(right(Type, 3) = 'exc', 1, 2) -- РµСЃР»Рё Р·Р°РіСЂСѓР¶РµРЅ exСЃeption, С‚Рѕ Р±РµСЂРµРј РµРіРѕ 
 			) as rn
 		from merch.tbl_POSPlan
 	)
@@ -555,9 +555,9 @@ as
 		hc.Agency
 		,hc.fldMonth as Period
 		,hc.OutletCode
-		,'Some chain' as [Сеть]
+		,'Some chain' as [РЎРµС‚СЊ]
 		,o.AddressFull
-		,bc.BaseCity as [Базовый город]
+		,bc.BaseCity as [Р‘Р°Р·РѕРІС‹Р№ РіРѕСЂРѕРґ]
 		,o.GeographyRegion
 		,hc.GeoCity				as [Geography Town]
 		,o.Latitude
@@ -565,7 +565,7 @@ as
 		,mv.VisitTimeMinutesMin as [Time Minimum per visit, minutes]
 		,mv.VisitTimeMinutes as [Time per visit, minutes]
 		,mv.VisitPerWeek as [Visit per week]
-		,mv.HoursStandart as [Стандарт часов в день FS/ST]
+		,mv.HoursStandart as [РЎС‚Р°РЅРґР°СЂС‚ С‡Р°СЃРѕРІ РІ РґРµРЅСЊ FS/ST]
 		,hc.HourCost as [Hour Cost]
 		,hc.VisitCost as [Visit Cost]
 		,hc.VisitCostPerWeek as [Visits cost per week]
@@ -592,70 +592,70 @@ as
 		,YearWeek as [Week]
 		,fldMonth
 		,OutletCode
-		,ChainName as [Сеть]
-		,OutletType as [Тип ТТ]
-		,AddressFull as [Адрес]
-		,iif(isOutletBaseCityCovered = 1, 'да', 'нет') as [Точка к покрытию]
+		,ChainName as [РЎРµС‚СЊ]
+		,OutletType as [РўРёРї РўРў]
+		,AddressFull as [РђРґСЂРµСЃ]
+		,iif(isOutletBaseCityCovered = 1, 'РґР°', 'РЅРµС‚') as [РўРѕС‡РєР° Рє РїРѕРєСЂС‹С‚РёСЋ]
 		,RSM
 		,ASM
 		,Manager as [Territory TM]
 		--,EmployeeCode
-		,BaseCity as [Базовый город]
+		,BaseCity as [Р‘Р°Р·РѕРІС‹Р№ РіРѕСЂРѕРґ]
 		,GeographyRegion as [Geography Reg]
 		,GeographyTown as [Geography Town]
-		,Latitude as [Широта]
-		,Longitude as [Долгота]
+		,Latitude as [РЁРёСЂРѕС‚Р°]
+		,Longitude as [Р”РѕР»РіРѕС‚Р°]
 		,VisitTimeMinutesMin as [Time Minimum per visit, minutes]
 		,VisitTimeMinutes as [Time per visit, minutes]
 		,VisitPerWeek as [Visit per week]
-		,HoursStandart as [Стандарт часов в день FS/ST]
-		,MonthCoefficient as [Коэфф произв календаря]
+		,HoursStandart as [РЎС‚Р°РЅРґР°СЂС‚ С‡Р°СЃРѕРІ РІ РґРµРЅСЊ FS/ST]
+		,MonthCoefficient as [РљРѕСЌС„С„ РїСЂРѕРёР·РІ РєР°Р»РµРЅРґР°СЂСЏ]
 		,HourCost_Base_KPI_AK as [Hour cost (Base+KPI+AK)]
 		,VisitCost_Base_KPI_AK as [Visit cost (Base+KPI+AK)]
 		,VisitCost_Base_AK as [Visit cost (Base+AK)]
 		,VisitCost_KPI_AK as [Visit cost (KPI 100% +AK)]
-		,Position_Name as [Автор визита (FS ST)]
-		,VisitTimeBegin as [Время начала визита]
-		,VisitTimeEnd as [Время конца визита]
-		,datediff(minute, VisitTimeBegin, VisitTimeEnd) as [Длительность визита в минутах]
-		,LongitudeBegin as [коор факт входа долгота]
-		,LatitudeBegin as [коор факт входа широта]
-		,DistanceFromOutletBegin as [отклонение координат входа от эталонной точки, метров]
-		,LongitudeEnd as [коор факт выхода долгота]
-		,LatitudeEnd as [коор факт выхода широта]
-		,DistanceFromOutletEnd as [отклонение координат выхода от эталонной точки, метров]
-		,TimeSincePreviousVisit as [время с завершения предыдущего  визита]
-		,iif(TaskPass = 1, 1, 0) as [зачет визита по соответствию наличия в задании (1/0)]
-		,iif(CoordinatesPass = 1, 1, 0) as [зачет визита по координа там (1/0)]
-		,iif(VisitsPerWeekPass = 1, 1, 0) as [зачет визита кол-ву в квлендарную неделю (1/0)]
-		,iif(MinimumTimeVisitPass = 1, 1, 0) as [зачет по времени в день]
-		,iif(DaysCountVisitPass = 1, 1, 0) as [зачет по самому длительному посещению в рамках одного visit_id]
-		,iif(VisitPass = 1, 1, 0) as [ИТОГО зачет визита СИСТЕМОЙ]
+		,Position_Name as [РђРІС‚РѕСЂ РІРёР·РёС‚Р° (FS ST)]
+		,VisitTimeBegin as [Р’СЂРµРјСЏ РЅР°С‡Р°Р»Р° РІРёР·РёС‚Р°]
+		,VisitTimeEnd as [Р’СЂРµРјСЏ РєРѕРЅС†Р° РІРёР·РёС‚Р°]
+		,datediff(minute, VisitTimeBegin, VisitTimeEnd) as [Р”Р»РёС‚РµР»СЊРЅРѕСЃС‚СЊ РІРёР·РёС‚Р° РІ РјРёРЅСѓС‚Р°С…]
+		,LongitudeBegin as [РєРѕРѕСЂ С„Р°РєС‚ РІС…РѕРґР° РґРѕР»РіРѕС‚Р°]
+		,LatitudeBegin as [РєРѕРѕСЂ С„Р°РєС‚ РІС…РѕРґР° С€РёСЂРѕС‚Р°]
+		,DistanceFromOutletBegin as [РѕС‚РєР»РѕРЅРµРЅРёРµ РєРѕРѕСЂРґРёРЅР°С‚ РІС…РѕРґР° РѕС‚ СЌС‚Р°Р»РѕРЅРЅРѕР№ С‚РѕС‡РєРё, РјРµС‚СЂРѕРІ]
+		,LongitudeEnd as [РєРѕРѕСЂ С„Р°РєС‚ РІС‹С…РѕРґР° РґРѕР»РіРѕС‚Р°]
+		,LatitudeEnd as [РєРѕРѕСЂ С„Р°РєС‚ РІС‹С…РѕРґР° С€РёСЂРѕС‚Р°]
+		,DistanceFromOutletEnd as [РѕС‚РєР»РѕРЅРµРЅРёРµ РєРѕРѕСЂРґРёРЅР°С‚ РІС‹С…РѕРґР° РѕС‚ СЌС‚Р°Р»РѕРЅРЅРѕР№ С‚РѕС‡РєРё, РјРµС‚СЂРѕРІ]
+		,TimeSincePreviousVisit as [РІСЂРµРјСЏ СЃ Р·Р°РІРµСЂС€РµРЅРёСЏ РїСЂРµРґС‹РґСѓС‰РµРіРѕ  РІРёР·РёС‚Р°]
+		,iif(TaskPass = 1, 1, 0) as [Р·Р°С‡РµС‚ РІРёР·РёС‚Р° РїРѕ СЃРѕРѕС‚РІРµС‚СЃС‚РІРёСЋ РЅР°Р»РёС‡РёСЏ РІ Р·Р°РґР°РЅРёРё (1/0)]
+		,iif(CoordinatesPass = 1, 1, 0) as [Р·Р°С‡РµС‚ РІРёР·РёС‚Р° РїРѕ РєРѕРѕСЂРґРёРЅР° С‚Р°Рј (1/0)]
+		,iif(VisitsPerWeekPass = 1, 1, 0) as [Р·Р°С‡РµС‚ РІРёР·РёС‚Р° РєРѕР»-РІСѓ РІ РєРІР»РµРЅРґР°СЂРЅСѓСЋ РЅРµРґРµР»СЋ (1/0)]
+		,iif(MinimumTimeVisitPass = 1, 1, 0) as [Р·Р°С‡РµС‚ РїРѕ РІСЂРµРјРµРЅРё РІ РґРµРЅСЊ]
+		,iif(DaysCountVisitPass = 1, 1, 0) as [Р·Р°С‡РµС‚ РїРѕ СЃР°РјРѕРјСѓ РґР»РёС‚РµР»СЊРЅРѕРјСѓ РїРѕСЃРµС‰РµРЅРёСЋ РІ СЂР°РјРєР°С… РѕРґРЅРѕРіРѕ visit_id]
+		,iif(VisitPass = 1, 1, 0) as [РРўРћР“Рћ Р·Р°С‡РµС‚ РІРёР·РёС‚Р° РЎРРЎРўР•РњРћР™]
 		,CoordinatorVisitException as [Crd-Visit-Exc]
-		,AgencyComment as [комментарий эксепшена от координатора агентства]
+		,AgencyComment as [РєРѕРјРјРµРЅС‚Р°СЂРёР№ СЌРєСЃРµРїС€РµРЅР° РѕС‚ РєРѕРѕСЂРґРёРЅР°С‚РѕСЂР° Р°РіРµРЅС‚СЃС‚РІР°]
 		,InspectorVisitException as [Insp-Visit-Exc]
-		,InspectorComment as [комментарий эксепшена от инспектора]
+		,InspectorComment as [РєРѕРјРјРµРЅС‚Р°СЂРёР№ СЌРєСЃРµРїС€РµРЅР° РѕС‚ РёРЅСЃРїРµРєС‚РѕСЂР°]
 		,JDEVisitException as [JDE-Visit-Exc]
-		,JDEComment as [комментарий эксепшена от JDE]
-		,FinalVisitPass as [ИТОГО зачет визита ФИНАЛЬНЫЙ]
+		,JDEComment as [РєРѕРјРјРµРЅС‚Р°СЂРёР№ СЌРєСЃРµРїС€РµРЅР° РѕС‚ JDE]
+		,FinalVisitPass as [РРўРћР“Рћ Р·Р°С‡РµС‚ РІРёР·РёС‚Р° Р¤РРќРђР›Р¬РќР«Р™]
 		,KPI
 		,[Plan]
 		,Fact
 		,[Fact / Plan]
 		,Execution
 		,AuditorValue as [Aud]
-		,AuditorComment as [комментарий аудитора]
+		,AuditorComment as [РєРѕРјРјРµРЅС‚Р°СЂРёР№ Р°СѓРґРёС‚РѕСЂР°]
 		,AppealValue as [Appeal]
-		,AppealComment as [апелляция от агентсва]
+		,AppealComment as [Р°РїРµР»Р»СЏС†РёСЏ РѕС‚ Р°РіРµРЅС‚СЃРІР°]
 		,JDEAuditorValue as [JDE-Aud]
-		,JDEAuditorComment as [итоговое приняте апелляции от JDE]
-		,FinalExecution as [Exec с учетом проверок]
-		,[Weight] as [Вес]
-		,PaymentCost as [Visit cost к выплате]
+		,JDEAuditorComment as [РёС‚РѕРіРѕРІРѕРµ РїСЂРёРЅСЏС‚Рµ Р°РїРµР»Р»СЏС†РёРё РѕС‚ JDE]
+		,FinalExecution as [Exec СЃ СѓС‡РµС‚РѕРј РїСЂРѕРІРµСЂРѕРє]
+		,[Weight] as [Р’РµСЃ]
+		,PaymentCost as [Visit cost Рє РІС‹РїР»Р°С‚Рµ]
 		,TMDigitalAuditCoefficient as [TM_digital-audit]
 		,TMFieldAuditCoefficient as [TM_field-audit]
-		,FinalPaymentCost as [Итого Visit cost к выплате]
-		,Photo as [Фото]
+		,FinalPaymentCost as [РС‚РѕРіРѕ Visit cost Рє РІС‹РїР»Р°С‚Рµ]
+		,Photo as [Р¤РѕС‚Рѕ]
 	from merch.tbl_VisitFactCost
 
 GO
