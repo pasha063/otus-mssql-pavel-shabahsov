@@ -1,0 +1,36 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\admin\\source\\repos\\Report Project3\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{4A2E283D-1970-7303-F04A-96FAEE8C58EE}|Report Project3\\Report Project3.rptproj|C:\\Users\\admin\\source\\repos\\Report Project3\\Report Project3\\Report1.rdl||{420F4200-DD61-4785-81F3-52669CBC208E}",
+      "RelativeMoniker": "D:0:0:{4A2E283D-1970-7303-F04A-96FAEE8C58EE}|Report Project3\\Report Project3.rptproj|solutionrelative:Report Project3\\Report1.rdl||{420F4200-DD61-4785-81F3-52669CBC208E}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Report1.rdl [Design]",
+              "DocumentMoniker": "C:\\Users\\admin\\source\\repos\\Report Project3\\Report Project3\\Report1.rdl",
+              "RelativeDocumentMoniker": "Report Project3\\Report1.rdl",
+              "ToolTip": "C:\\Users\\admin\\source\\repos\\Report Project3\\Report Project3\\Report1.rdl [Design]",
+              "RelativeToolTip": "Report Project3\\Report1.rdl [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-08-05T09:10:46.498Z",
+              "EditorCaption": " [Design]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
